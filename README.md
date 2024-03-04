@@ -1,2 +1,0 @@
-# jspsych
-jsPsych Experiments
