@@ -63,7 +63,7 @@
    },
  on_finish: function(data) {
    if(aborted == true){alert("You must use Chrome or Firefox to complete this experiment.")}
-     if(aborted == false) {  if(jsPsych.data.get().filter({trial_type: "Summary Trial"}).select('correct').mean() < 0.55){window.location = attention_redirect_link} else {window.location = redirect_link}}
+     if(aborted == false) {  if(jsPsych.data.get().filter({trial_type: "Summary Trial"}).select('correct').mean() < 0.55){window.location = redirect_link} else {window.location = redirect_link}}
     //jsPsych.data.get().localSave('csv','mydata.csv');
    }
 })
@@ -628,8 +628,8 @@ const test_block = {
     jsPsych.data.addProperties({participant_id: SONA_PID});
     jsPsych.data.addProperties({Source: "SONA"});
 
-    redirect_link = "https://sydneypsych.sona-systems.com/webstudy_credit.aspx?experiment_id="+sona_experiment_id+"&credit_token="+sona_credit_token+"&survey_code=" + SONA_PID + "&id=" + SONA_PID;
-    attention_redirect_link = "https://sydney.au1.qualtrics.com/jfe/form/SV_3h2qh8pBAnv00QK?SONA_PID=" + SONA_PID + "accuracy=" + jsPsych.data.get().filter({trial_type: "Summary Trial"}).select('correct').mean(); // A seperate link for those who fail the attention check
+    if(condition == 0) redirect_link = "	https://mili2nd.co/vofc"
+    if(condition == 1) redirect_link = "	https://mili2nd.co/vofc"
 
 
   }
@@ -665,7 +665,7 @@ const test_block = {
 
 // Create Experiment
 
-condition_1_timeline = [browser_check, enter_fullscreen, participant_info_paid, participant_info_SONA, instructions, practice_block, practice_end, conf_instruc, test_start, test_block, new_block, test_block, new_block, test_block, debug, save_data, DEBRIEF_SONA];
+condition_1_timeline = [ browser_check, enter_fullscreen, participant_info_paid, participant_info_SONA, instructions, practice_block, practice_end, conf_instruc, test_start, test_block, new_block, test_block, new_block, test_block, debug, save_data, DEBRIEF_SONA];
 
 async function createExperiment(){
   const condition = await jsPsychPipe.getCondition(DataPipe_ID);
