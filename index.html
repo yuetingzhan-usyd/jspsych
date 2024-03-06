@@ -640,8 +640,8 @@ const test_block = {
     jsPsych.data.addProperties({participant_id: PROLIFIC_PID});
     jsPsych.data.addProperties({Source: "Prolific"});
 
-    redirect_link ="https://app.prolific.com/submissions/complete?cc=" + Prolific_redirect;
-    attention_redirect_link ="https://app.prolific.co/submissions/complete?cc=" + Prolific_failed_check; // A seperate link for those who fail the attention check
+    if(condition == 0) redirect_link = "https://mili2nd.co/vofc?PROLIFIC_PID=" + PROLIFIC_PID;
+    if(condition == 1) redirect_link = "https://mili2nd.co/vofcPROLIFIC_PID=" + PROLIFIC_PID;
   }
 
 
