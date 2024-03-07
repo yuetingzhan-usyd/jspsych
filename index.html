@@ -77,6 +77,11 @@
   const sona_credit_token = "NA"; // The SONA credit token
   const Prolific_redirect = "CHGWKNI0"; // The Prolific redirect link (to credit)
   const Prolific_failed_check = "C13PIUOF"; // The Prolific redirect link to NOT credit (manual review)
+  const queryString = window.location.search;
+  console.log(queryString);
+  const urlParams = new URLSearchParams(queryString);
+  const prolific_id = urlParams.get('PROLIFIC_PID');
+  console.log(prolific_id);
 
 
 
@@ -628,8 +633,8 @@ const test_block = {
     jsPsych.data.addProperties({participant_id: SONA_PID});
     jsPsych.data.addProperties({Source: "SONA"});
 
-    redirect_link = "https://mili2nd.co/vofc?PROLIFIC_PID=" + PROLIFIC_PID;
-    
+    redirect_link = "https://sydneypsych.sona-systems.com/webstudy_credit.aspx?experiment_id="+sona_experiment_id+"&credit_token="+sona_credit_token+"&survey_code=" + SONA_PID + "&id=" + SONA_PID;
+    attention_redirect_link = "https://sydney.au1.qualtrics.com/jfe/form/SV_3h2qh8pBAnv00QK?SONA_PID=" + SONA_PID + "accuracy=" + jsPsych.data.get().filter({trial_type: "Summary Trial"}).select('correct').mean(); // A seperate link for those who fail the attention check
 
 
   }
@@ -640,7 +645,11 @@ const test_block = {
     jsPsych.data.addProperties({participant_id: PROLIFIC_PID});
     jsPsych.data.addProperties({Source: "Prolific"});
 
-    redirect_link = "https://mili2nd.co/vofc?PROLIFIC_PID=" + PROLIFIC_PID;
+    redirect_link ="https://mili2nd.co/vofc" + queryString;
+    attention_redirect_link ="https://mili2nd.co/vofc" + queryString;
+
+    //redirect_link ="https://app.prolific.com/submissions/complete?cc=" + Prolific_redirect;
+    //attention_redirect_link ="https://app.prolific.co/submissions/complete?cc=" + Prolific_failed_check; // A seperate link for those who fail the attention check
   
   }
 
