@@ -633,7 +633,7 @@ const test_block = {
 
 // Capture any url paramaters
   const PROLIFIC_PID = jsPsych.data.getURLVariable('PROLIFIC_PID');
-  const SONA_PID = jsPsych.data.getURLVariable('sona_id');
+  let SONA_PID = jsPsych.data.urlVariables()['sona_id'];
 
 
 // Redirect based on SONA vs Prolific
