@@ -81,8 +81,8 @@
   const queryString = window.location.search; // Pass subject id from sona to inquisit
   console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
-  const sona_id = urlParams.get('sona_id');
-  console.log(sona_id);
+  const subjectid = urlParams.get('subjectid');
+  console.log(subjectid);
 
 
 
@@ -633,7 +633,7 @@ const test_block = {
 
 // Capture any url paramaters
   const PROLIFIC_PID = jsPsych.data.getURLVariable('PROLIFIC_PID');
-  let SONA_PID = jsPsych.data.urlVariables()['sona_id'];
+  let SONA_PID = jsPsych.data.urlVariables()['subjectid'];
 
 
 // Redirect based on SONA vs Prolific
